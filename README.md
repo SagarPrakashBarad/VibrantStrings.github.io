@@ -1,4 +1,4 @@
-# String Simulation
+# String Simulation: Epic Waves Unleashed! 🌊🎸
 This is a simulation that visualizes the behavior of a vibrating string using the wave equation. The simulation aims to provide an interactive and intuitive representation of the physics involved.
 
 ## The Wave Equation
@@ -43,3 +43,11 @@ $$x_c = C_w \cdot x_s $$
 $$y_c = C_w \cdot y_s + C_h / 2 $$
 
 Here, $C_w$ and $C_h$ represent the width and height of the canvas in pixels, respectively. These equations allow us to visualize the string's vibrations accurately within the canvas.
+
+## Contributing
+
+Contributions are welcome! If you find any bugs or have suggestions for improvement, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
