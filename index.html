@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Simulation</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">String Simulation</h1>
+    <div class="equation">
+      <p>The TRUE wave equation (with damping and stress-strain coupling):</p>
+      <p>&#8706;<sup>2</sup>y/&#8706;x<sup>2</sup> - (1/c<sup>2</sup>)&#8706;<sup>2</sup>y/&#8706;t<sup>2</sup> - &#947;&#8706;y/&#8706;t - l<sup>2</sup>&#8706;<sup>4</sup>y/&#8706;x<sup>4</sup> = 0</p>
+    </div>
+    <div class="condition">
+      <p>Boundary Conditions:</p>
+      <p>y(0, t) = y(L, t) = 0, y(x, 0) = f(x)</p>
+    </div>
+     <button id="info-button" class="info-button blue" onclick="toggleInfo()">Behind the Curtains</button>
+    <div id="info" class="condition hidden">
+      <p>Parameters:</p>
+      <p>c: speed of the wave [m/s], &#947;: damping constant [s/m], l: characteristic length (stiffness term) [dimensionless]</p>
+      <p>Discrete Form:</p>
+      <p>(&#8706;<sup>2</sup>y<sub>j+1</sub><sup>m</sup> - 2y<sub>j</sub><sup>m</sup> + &#8706;<sup>2</sup>y<sub>j-1</sub><sup>m</sup>) / &#8710;x<sup>2</sup> - (1/c<sup>2</sup>)(y<sub>j</sub><sup>m+1</sup> - 2y<sub>j</sub><sup>m</sup> + y<sub>j</sub><sup>m-1</sup>) / &#8710;t<sup>2</sup> - &#947;(y<sub>j</sub><sup>m+1</sup> - y<sub>j</sub><sup>m-1</sup>) / (2&#8710;t) - l<sup>2</sup>(y<sub>j-2</sub><sup>m</sup> - 4y<sub>j-1</sub><sup>m</sup> + 6y<sub>j</sub><sup>m</sup> - 4y<sub>j+1</sub><sup>m</sup> + y<sub>j+2</sub><sup>m</sup>) / &#8710;x<sup>4</sup> = 0</p>
+      <p>Solution:</p>
+      <p>y<sub>j</sub><sup>m+1</sup> = ([1 / (c<sup>2</sup>&#8710;t<sup>2</sup>) + &#947; / (2&#8710;t)])<sup>-1</sup> * [(&#8706;<sup>2</sup>y<sub>j+1</sub><sup>m</sup> - 2y<sub>j</sub><sup>m</sup> + &#8706;<sup>2</sup>y<sub>j-1</sub><sup>m</sup>) / &#8710;x<sup>2</sup> - (1 / (c<sup>2</sup>&#8710;t<sup>2</sup>))(y<sub>j</sub><sup>m-1</sup> - 2y<sub>j</sub><sup>m</sup>) + (&#947; / (2&#8710;t))y<sub>j</sub><sup>m-1</sup> - (l<sup>2</sup> / &#8710;x<sup>4</sup>)(y<sub>j-2</sub><sup>m</sup> - 4y<sub>j-1</sub><sup>m</sup> + 6y<sub>j</sub><sup>m</sup> - 4y<sub>j+1</sub><sup>m</sup> + y<sub>j+2</sub><sup>m</sup>)]</p>
+    </div>
+    <p class = "stability-condition">
+          The stability condition for the simulation is given by:
+          <strong>cΔt/Δx &lt; 1</strong>
+    </p>
+    <p class="instruction">Click or drag the string to any initial position you want, to start the simulation.</p>
+  </div>
+  
+  <canvas id="cw"></canvas>
+  <script src="simulation.js"></script>
+  <script>
+  function toggleInfo() {
+    var info = document.getElementById("info");
+    info.classList.toggle("hidden");
+
+    var button = document.getElementById("info-button");
+    button.classList.toggle("active");
+  }
+
+  function changeButtonColor(color) {
+    var button = document.getElementById("info-button");
+    button.className = "info-button " + color;
+  }
+</script>
+</body>
+</html>
