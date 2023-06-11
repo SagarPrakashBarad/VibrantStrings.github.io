@@ -121,7 +121,7 @@ function setSize() {
 
 function anim() {
   requestAnimationFrame(anim);
-  context.fillStyle = "rgba(0,0,0,1)";
+  context.fillStyle = "rgba(255, 255, 255, 1)";
   context.fillRect(0, 0, canvas.width, canvas.height);
   for (let i=5; i--;) {
     s.move(draw=(i==0))
