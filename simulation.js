@@ -81,7 +81,7 @@ function handleMoveEvent(x, y) {
 }
 
 function handleTouchEvent(e) {
-  const touch = e.changedTouches[0];
+  const touch = e.touches[0];
   handleMoveEvent(touch.clientX, touch.clientY);
 }
 
